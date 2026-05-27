@@ -121,36 +121,54 @@ body {
   position: relative;
 }
 
-/* ===== ULURP overlay ===== */
-.ulurp-banner {
+/* ===== Process overlays (ULURP, ELURP, Local Law, Budget) ===== */
+/* Each overlay has a color set via CSS variables. Active overlay = body.overlay-<id>. */
+:root {
+  --ov-ulurp:        #d4541f;  /* orange */
+  --ov-ulurp-branch: #8b4789;  /* purple (AHAB) */
+  --ov-elurp:        #0e8a7a;  /* teal */
+  --ov-elurp-branch: #0e8a7a;
+  --ov-locallaw:     #2c5aa0;  /* civic blue */
+  --ov-locallaw-branch: #c9941f; /* gold for override branch */
+  --ov-budget:       #c9941f;  /* gold */
+  --ov-budget-branch:#c9941f;
+  --ov-color:        var(--ov-ulurp);
+  --ov-branch-color: var(--ov-ulurp-branch);
+}
+body.overlay-ulurp    { --ov-color: var(--ov-ulurp);    --ov-branch-color: var(--ov-ulurp-branch); }
+body.overlay-elurp    { --ov-color: var(--ov-elurp);    --ov-branch-color: var(--ov-elurp-branch); }
+body.overlay-local-law{ --ov-color: var(--ov-locallaw); --ov-branch-color: var(--ov-locallaw-branch); }
+body.overlay-budget-process { --ov-color: var(--ov-budget); --ov-branch-color: var(--ov-budget-branch); }
+
+.overlay-banner {
   display: none;
-  background: linear-gradient(180deg, #fff5ee 0%, #ffeadd 100%);
-  border: 1.5px solid var(--accent);
+  background: #fff;
+  border: 1.5px solid var(--ov-color);
   border-radius: 10px;
   padding: 14px 16px;
   margin-bottom: 18px;
-  box-shadow: 0 4px 16px rgba(212,84,31,0.15);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
 }
-body.overlay-ulurp .ulurp-banner { display: block; }
-.ulurp-banner-header {
+body.overlay-active .overlay-banner { display: block; }
+.overlay-banner-header {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 10px;
   margin-bottom: 10px;
   padding-bottom: 8px;
-  border-bottom: 1px dashed var(--accent);
+  border-bottom: 1px dashed var(--ov-color);
 }
-.ulurp-banner-header strong {
-  color: var(--accent);
+.overlay-banner-header strong {
+  color: var(--ov-color);
   font-size: 14px;
 }
-.ulurp-banner-sub {
+.overlay-banner-sub {
   font-size: 11px;
   color: var(--ink-3);
   font-style: italic;
 }
-.ulurp-timeline {
+.overlay-timeline {
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
@@ -159,12 +177,12 @@ body.overlay-ulurp .ulurp-banner { display: block; }
   padding: 0;
   list-style: none;
 }
-.ulurp-step {
+.overlay-step {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background: #fff;
-  border: 1.5px solid var(--accent);
+  border: 1.5px solid var(--ov-color);
   border-radius: 6px;
   padding: 6px 10px;
   cursor: pointer;
@@ -172,75 +190,72 @@ body.overlay-ulurp .ulurp-banner { display: block; }
   min-width: 130px;
   flex: 1;
 }
-.ulurp-step:hover {
-  background: var(--accent);
+.overlay-step:hover,
+.overlay-step.active {
+  background: var(--ov-color);
   color: #fff;
 }
-.ulurp-step.active {
-  background: var(--accent);
-  color: #fff;
-}
-.ulurp-step .step-num {
+.overlay-step .step-num {
   font-size: 10px;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--ov-color);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  background: rgba(212,84,31,0.15);
+  background: rgba(0,0,0,0.06);
   padding: 1px 6px;
   border-radius: 100px;
   margin-bottom: 2px;
 }
-.ulurp-step:hover .step-num,
-.ulurp-step.active .step-num {
-  color: var(--accent);
+.overlay-step:hover .step-num,
+.overlay-step.active .step-num {
+  color: var(--ov-color);
   background: #fff;
 }
-.ulurp-step .step-name {
+.overlay-step .step-name {
   font-size: 12px;
   font-weight: 600;
   line-height: 1.1;
 }
-.ulurp-step .step-days {
+.overlay-step .step-days {
   font-size: 10px;
   color: var(--ink-3);
   font-style: italic;
   margin-top: 2px;
 }
-.ulurp-step:hover .step-days,
-.ulurp-step.active .step-days { color: rgba(255,255,255,0.85); }
-.ulurp-arrow {
+.overlay-step:hover .step-days,
+.overlay-step.active .step-days { color: rgba(255,255,255,0.85); }
+.overlay-arrow {
   display: flex;
   align-items: center;
   font-size: 18px;
-  color: var(--accent);
+  color: var(--ov-color);
   font-weight: 700;
   padding: 0 2px;
 }
-/* AHAB branch — visually distinct (purple) to mark it as the AH-only path added Nov 2025 */
-.ulurp-step.ahab-step {
-  border-color: var(--inter);
+/* Branch step (dashed border, distinct color) */
+.overlay-step.branch-step {
+  border-color: var(--ov-branch-color);
   border-style: dashed;
 }
-.ulurp-step.ahab-step .step-num {
-  color: var(--inter);
-  background: rgba(139,71,137,0.15);
+.overlay-step.branch-step .step-num {
+  color: var(--ov-branch-color);
+  background: rgba(0,0,0,0.06);
 }
-.ulurp-step.ahab-step:hover,
-.ulurp-step.ahab-step.active {
-  background: var(--inter);
+.overlay-step.branch-step:hover,
+.overlay-step.branch-step.active {
+  background: var(--ov-branch-color);
   color: #fff;
   border-style: solid;
 }
-.ulurp-step.ahab-step:hover .step-num,
-.ulurp-step.ahab-step.active .step-num {
-  color: var(--inter);
+.overlay-step.branch-step:hover .step-num,
+.overlay-step.branch-step.active .step-num {
+  color: var(--ov-branch-color);
   background: #fff;
 }
-.ulurp-arrow.ahab-arrow { color: var(--inter); }
+.overlay-arrow.branch-arrow { color: var(--ov-branch-color); }
 
 /* SVG connection layer */
-.ulurp-connections {
+.overlay-connections {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -249,58 +264,56 @@ body.overlay-ulurp .ulurp-banner { display: block; }
   z-index: 5;
   display: none;
 }
-body.overlay-ulurp .ulurp-connections { display: block; }
-.ulurp-connections path {
+body.overlay-active .overlay-connections { display: block; }
+.overlay-connections .overlay-path {
   fill: none;
-  stroke: var(--accent);
+  stroke: var(--ov-color);
   stroke-width: 2.5;
   stroke-dasharray: 8 5;
   opacity: 0.7;
-  animation: ulurp-dash 1.2s linear infinite;
+  animation: ov-dash 1.2s linear infinite;
 }
-.ulurp-connections .ulurp-arrowhead {
-  fill: var(--accent);
-}
-.ulurp-connections text {
-  fill: var(--accent);
-  font-size: 11px;
-  font-weight: 700;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-}
-.ulurp-connections .label-bg {
+.overlay-connections .branch-path { stroke: var(--ov-branch-color); }
+.overlay-connections .overlay-arrowhead { fill: var(--ov-color); }
+.overlay-connections .branch-arrowhead  { fill: var(--ov-branch-color); }
+.overlay-connections .overlay-text { fill: var(--ov-color); font-size: 11px; font-weight: 700; font-family: -apple-system, sans-serif; }
+.overlay-connections .branch-text  { fill: var(--ov-branch-color); }
+.overlay-connections .overlay-label-bg {
   fill: #fff;
-  stroke: var(--accent);
+  stroke: var(--ov-color);
   stroke-width: 1;
   stroke-dasharray: none;
   opacity: 1;
   animation: none;
 }
-.ulurp-connections .ahab-path { stroke: var(--inter); }
-.ulurp-connections .ahab-arrowhead { fill: var(--inter); }
-.ulurp-connections .ahab-label-bg { stroke: var(--inter); }
-.ulurp-connections .ahab-text { fill: var(--inter); }
-@keyframes ulurp-dash {
+.overlay-connections .branch-label-bg { stroke: var(--ov-branch-color); }
+@keyframes ov-dash {
   to { stroke-dashoffset: -26; }
 }
 
-/* When ULURP is on, dim non-involved nodes and highlight involved ones */
-body.overlay-ulurp .silo:not(.budget-silo) .node,
-body.overlay-ulurp .silo:not(.budget-silo) .chip {
+/* When any overlay is on: dim non-involved nodes, highlight involved ones */
+body.overlay-active .silo:not(.budget-silo) .node,
+body.overlay-active .silo:not(.budget-silo) .chip {
   opacity: 0.35;
   transition: opacity 0.3s ease;
 }
-body.overlay-ulurp .ulurp-active {
+body.overlay-active.overlay-budget-process .budget-silo .node,
+body.overlay-active.overlay-budget-process .budget-silo .chip {
+  opacity: 0.35;
+}
+body.overlay-active .overlay-active-node {
   opacity: 1 !important;
-  box-shadow: 0 0 0 2.5px var(--accent), 0 4px 12px rgba(212,84,31,0.25) !important;
+  box-shadow: 0 0 0 2.5px var(--ov-color), 0 4px 12px rgba(0,0,0,0.18) !important;
   z-index: 10;
   position: relative;
 }
-body.overlay-ulurp .chip.ulurp-active {
-  background: var(--accent) !important;
+body.overlay-active .chip.overlay-active-node {
+  background: var(--ov-color) !important;
   color: #fff !important;
-  border-color: var(--accent) !important;
+  border-color: var(--ov-color) !important;
 }
-body.overlay-ulurp .budget-silo { opacity: 0.5; }
+body.overlay-active .budget-silo:not(.always-on) { opacity: 0.5; }
+body.overlay-active.overlay-budget-process .budget-silo { opacity: 1; }
 
 .silo-legend {
   display: flex;

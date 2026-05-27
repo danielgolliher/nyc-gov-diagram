@@ -744,5 +744,387 @@ window.NYC_GOV_DATA = {
       "The Court of Appeals interprets Article IX (home rule)"
     ],
     source: { label: "NY Courts: Outline", url: "https://www.nycourts.gov/ctapps/outline.htm" }
+  },
+
+  // ============ ELURP OVERLAY (added by Nov 2025 Charter amendment Q3) ============
+  "elurp-overview": {
+    name: "ELURP — Expedited Land Use Review Procedure",
+    silo: "doing",
+    subhead: "Created Nov 4, 2025 (Q3, passed 56.75%) · ~90 days",
+    description: "A new parallel track to ULURP for modest housing, infrastructure, resiliency, and city-property land-use actions. Compresses public review from ~7 months to ~90 days by running Community Board and Borough President review concurrently and making the City Planning Commission the final decision-maker — no Council vote for most ELURP applications. Created by Charter Proposal 3 on the November 4, 2025 ballot. Effective on certification of election results; full operation requires DCP rule-making.",
+    keyFacts: [
+      "Qualifies: small rezonings (≤30% capacity increase), affordable-housing land deals, resiliency projects, open space, solar on city property",
+      "Excluded: anything requiring a full EIS, citywide/multi-borough rezonings, landmarks designations",
+      "Effective on cert. of Nov 4, 2025 results; awaiting DCP rules",
+      "Companion Appeals Board (Q4) can override Council disapproval for the narrow Council-reviewed subset"
+    ],
+    source: { label: "CBC: Making the Most of ELURP", url: "https://cbcny.org/advocacy/making-most-proposed-expedited-land-use-review-procedure" }
+  },
+  "elurp-cert": {
+    name: "Step 1 — DCP Certification (ELURP)",
+    silo: "doing",
+    subhead: "Locks the application into the expedited track",
+    description: "DCP reviews the application for completeness and certifies it into ELURP. Certification starts the public-review clock. DCP staff also determine whether a project qualifies for ELURP or must use full ULURP. Environmental review (CEQR) runs in parallel; projects that need a full Environmental Impact Statement cannot use ELURP.",
+    keyFacts: [
+      "DCP decides ELURP vs. full ULURP eligibility",
+      "Awaiting CAPA rule-making to clarify edge cases",
+      "Projects needing a full EIS are excluded"
+    ],
+    source: { label: "2025 NYC Charter Revision Commission Final Report", url: "https://www.nyc.gov/site/charter/news/2025-nyc-charter-revision-commission-adopts-five-ballot-proposals.page" }
+  },
+  "elurp-cb-bp": {
+    name: "Step 2 — Community Board + Borough President (concurrent)",
+    silo: "reviewing",
+    subhead: "60 days · advisory · both at once",
+    description: "The Community Board and the Borough President review the application simultaneously — not sequentially as in ULURP. Each holds a public hearing and issues a written advisory recommendation. Running these in parallel is the single biggest time saver versus ULURP (which has CB 60 days, then BP 30 days sequentially).",
+    keyFacts: [
+      "Concurrent rather than sequential — saves ~30 days vs. ULURP",
+      "Both recommendations are advisory only",
+      "Extended deadlines apply for late-June/early-July certifications (board recess)"
+    ],
+    source: { label: "Rosenberg & Estis: 2025 Land Use Changes", url: "https://www.rosenbergestis.com/media/blog/industry-updates/nyc-voters-approve-significant-changes-to-accelerate-land-use-approvals" }
+  },
+  "elurp-cpc": {
+    name: "Step 3 — City Planning Commission Decision (final)",
+    silo: "doing",
+    subhead: "30 days · CPC vote is final",
+    description: "The CPC holds a public hearing and votes to approve, approve with modifications, or disapprove. For most ELURP applications this is the END — the City Council is bypassed entirely. This is the structural change that distinguishes ELURP from ULURP, where Council review under §197-d normally follows CPC.",
+    keyFacts: [
+      "CPC decision is final for most ELURP apps",
+      "No automatic Council review (the key difference from ULURP)",
+      "Council review only triggered for a narrow subset where state law mandates it"
+    ],
+    source: { label: "CBC: Making the Most of ELURP", url: "https://cbcny.org/advocacy/making-most-proposed-expedited-land-use-review-procedure" }
+  },
+  "elurp-ahab": {
+    name: "Step 4 (conditional) — Affordable Housing Appeals Board",
+    silo: "doing",
+    subhead: "Only if Council reviews + disapproves/modifies an AH application",
+    description: "For the narrow subset of ELURP applications that DO go to Council and concern affordable housing in a single borough, the same Affordable Housing Appeals Board from ULURP applies: Mayor + Council Speaker + the affected Borough President. A 2-of-3 vote can restore the CPC-approved version of the application.",
+    keyFacts: [
+      "Same board as the ULURP-Q4 AHAB",
+      "Single-borough affordable-housing projects only",
+      "2-of-3 vote required"
+    ],
+    source: { label: "Ballotpedia: 2025 NYC Question 4", url: "https://ballotpedia.org/New_York,_New_York,_Question_4,_Affordable_Housing_Appeals_Board_Charter_Amendment_(November_2025)" }
+  },
+
+  // ============ LOCAL LAW OVERLAY ============
+  "local-law-overview": {
+    name: "How a Local Law Becomes Part of the Administrative Code",
+    silo: "doing",
+    subhead: "NYC Charter §§28–40 · 26 of 51 to pass · 34 of 51 to override veto",
+    description: "The path from a Council Member's introduction to enactment and codification. Governed primarily by Charter Chapter 2 (§§28–40). Passage requires a majority of all 51 Members (26); a Mayor veto can be overridden by a 2/3 supermajority (34 of 51). Once enacted, the law is codified by American Legal Publishing into the Administrative Code (or, less commonly, into the Charter itself).",
+    keyFacts: [
+      "26 of 51 to pass; 34 of 51 to override veto",
+      "Mayor has 30 days — silence = enactment (no pocket veto)",
+      "Most local laws amend the Admin Code; some amend the Charter"
+    ],
+    source: { label: "NYC Council Legislation", url: "https://council.nyc.gov/legislation/" }
+  },
+  "law-intro": {
+    name: "Step 1 — Introduction",
+    silo: "doing",
+    subhead: "Council Members are the only direct introducers",
+    description: "Any Council Member may introduce a bill ('Intro') at a Stated Meeting. The Mayor, Public Advocate, and Borough Presidents cannot introduce directly but may have legislation introduced 'at the behest of' their office — a Council Member sponsors it on the floor. The bill is drafted with the Council's Legislation Division and gets an Intro number (e.g., 'Int 0704-2022').",
+    keyFacts: [
+      "Council Members are the only direct introducers",
+      "Mayor/PA/BPs introduce via a sponsoring Council Member",
+      "Public Advocate has a Council seat but no vote (Charter §24(e))"
+    ],
+    source: { label: "NYC Council Legislation Process", url: "https://council.nyc.gov/legislation/" }
+  },
+  "law-committee": {
+    name: "Step 2 — Committee Referral",
+    silo: "doing",
+    subhead: "Speaker assigns the bill",
+    description: "Through the Committee on Rules, Privileges and Elections, the Speaker assigns the bill to a standing committee based on subject matter. The Speaker has broad agenda-setting power — bills can sit indefinitely unless a majority of the full Council (26 of 51) signs a discharge motion under §46.",
+    keyFacts: [
+      "Speaker controls committee assignments",
+      "51 Council Members; ~40 committees and subcommittees",
+      "Majority discharge (26 votes) can force a bill out"
+    ],
+    source: { label: "NYC Charter Chapter 2", url: "https://nyccharter.readthedocs.io/c02/" }
+  },
+  "law-hearing": {
+    name: "Step 3 — Committee Hearing & Markup",
+    silo: "doing",
+    subhead: "Public hearing then committee vote",
+    description: "The committee holds a public hearing for testimony from agencies, advocates, and the public. The chair may then schedule a markup at which the committee amends the bill (Proposed Int 'A', 'B', etc.) and votes. A majority of the committee is required to report the bill out favorably.",
+    keyFacts: [
+      "Public testimony before committee vote",
+      "Amendments produce lettered versions (Int 0704-2022-A)",
+      "Committee majority needed to send to full Council"
+    ],
+    source: { label: "NYC Council Rules", url: "https://council.nyc.gov/legislation/" }
+  },
+  "law-layover": {
+    name: "Step 4 — Seven-Day Layover (Charter §36)",
+    silo: "doing",
+    subhead: "7 days · except on mayoral 'message of necessity'",
+    description: "Charter §36: the bill in its final form must sit on Council Members' desks for at least seven calendar days, exclusive of Sundays, before final passage. The Mayor can waive this by certifying immediate necessity — but that raises the passage threshold to 2/3 of all Members.",
+    keyFacts: [
+      "7-day deliberation safeguard",
+      "Mayoral necessity message waives the wait but raises threshold to 2/3"
+    ],
+    source: { label: "NYC Charter §36", url: "https://nyccharter.readthedocs.io/c02/" }
+  },
+  "law-vote": {
+    name: "Step 5 — Full Council Vote",
+    silo: "doing",
+    subhead: "26 of 51 (majority of all members) to pass",
+    description: "At a Stated Meeting the Council votes by recorded ayes-and-noes (Charter §35). A simple majority of ALL members elected — 26 of 51 — is required to pass, not just a majority of those present. The Clerk certifies and presents the bill to the Mayor.",
+    keyFacts: [
+      "Threshold: 26 of 51 (majority of all members)",
+      "Roll-call vote recorded in the journal per §35",
+      "Council Clerk certifies and presents to Mayor"
+    ],
+    source: { label: "NYC Charter §§35, 37", url: "https://nyccharter.readthedocs.io/c02/" }
+  },
+  "law-mayor": {
+    name: "Step 6 — Mayoral Action (§37)",
+    silo: "doing",
+    subhead: "30 days · sign, veto, or silence (= enactment)",
+    description: "The Mayor has 30 days from presentation to (a) sign, (b) veto with written objections, or (c) take no action. Inaction = the bill becomes law as if signed. NYC has no true pocket veto — silence equals enactment. A veto returns the bill to Council with the Mayor's written objections.",
+    keyFacts: [
+      "Sign → becomes Local Law",
+      "No action for 30 days → becomes Local Law",
+      "Veto → returned with written objections",
+      "No pocket veto: silence = enactment"
+    ],
+    source: { label: "NYC Charter §37", url: "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-390" }
+  },
+  "law-override": {
+    name: "Step 7 (conditional) — Council Override",
+    silo: "doing",
+    subhead: "34 of 51 (2/3) within 30 days of veto",
+    description: "If vetoed, Council has 30 days to reconsider. Override requires a 2/3 supermajority — 34 of 51 Members. If achieved, the bill becomes law notwithstanding the Mayor's objections.",
+    keyFacts: [
+      "Override threshold: 34 of 51 (2/3)",
+      "30-day reconsideration window",
+      "Successful override enacts the law immediately"
+    ],
+    source: { label: "NYC Charter §37", url: "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-390" }
+  },
+  "law-effective": {
+    name: "Step 8 — Effective Date",
+    silo: "doing",
+    subhead: "Default: immediately upon enactment",
+    description: "A local law takes effect on the date specified in its text. If no effective date is specified, it takes effect immediately upon enactment. Many laws delay effect by 30/90/120/180 days to give agencies time for rule-making and implementation.",
+    keyFacts: [
+      "Default = immediately on enactment if not otherwise specified",
+      "Common practice: delay 30–180 days for agency implementation",
+      "Some require companion RCNY rules before fully operative"
+    ],
+    source: { label: "NYC Charter §37", url: "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-390" }
+  },
+  "law-codify": {
+    name: "Step 9 — Codification",
+    silo: "legal",
+    subhead: "Numbered & placed in the Admin Code (or Charter)",
+    description: "Once enacted, the law gets a sequential number (e.g., 'Local Law 64 of 2023') and is codified by the city's law publisher (American Legal Publishing) into either the Administrative Code, the Charter, or another body of city law as the bill directs. The Local Law text itself is authoritative.",
+    keyFacts: [
+      "Numbered sequentially by year (LL 64/2023)",
+      "Most amend the Administrative Code",
+      "Some amend the Charter (subject to §38 referendum rules)",
+      "Codification is mechanical — the Local Law text controls"
+    ],
+    source: { label: "NYC Administrative Code", url: "https://codelibrary.amlegal.com/codes/newyorkcity/" }
+  },
+
+  // ============ BUDGET PROCESS OVERLAY ============
+  "budget-process-overview": {
+    name: "NYC Annual Budget Cycle",
+    silo: "budget",
+    subhead: "NYC Charter Chapter 10 · FY July 1 – June 30",
+    description: "A statutorily-deadlined cycle running November through June. The Mayor proposes; the Council modifies and adopts; the Comptroller and the Independent Budget Office independently analyze; Borough Presidents and Community Boards weigh in. The Expense Budget and the separate Capital Budget run on parallel but interlocking tracks. FY2027 is the first cycle under Mayor Mamdani and Speaker Menin.",
+    keyFacts: [
+      "Statutory adoption deadline: June 5 (Charter §254)",
+      "If Council fails to adopt by June 5, prior year's budget rolls over",
+      "FY27 Preliminary: $127B (Feb 2026); Executive: $124.7B (May 2026)"
+    ],
+    source: { label: "NYC Charter Chapter 10", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-revenue": {
+    name: "Step 1 — Comptroller Revenue Certification",
+    silo: "budget",
+    subhead: "Nov 1 · §229",
+    description: "The Comptroller certifies actual prior-year revenues to the Mayor. This sets the audited baseline against which next year's projections are built. The Mayor must publish a Nov 15 comparison of actual vs. previously estimated revenues.",
+    keyFacts: [
+      "Independent revenue certification by the elected Comptroller",
+      "Anchors the next FY conversation in audited actuals",
+      "Mayor's comparison report due Nov 15"
+    ],
+    source: { label: "NYC Charter §229", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-capcert": {
+    name: "Step 2 — Preliminary Capital Debt Certificate",
+    silo: "budget",
+    subhead: "Jan 16 · §235",
+    description: "Mayor publishes a preliminary certificate setting the maximum debt the City may soundly incur for capital projects. This caps the size of the four-year capital commitment plan.",
+    keyFacts: [
+      "Ceiling on capital borrowing capacity",
+      "Distributed to Council, Comptroller, BPs, and CPC",
+      "Companion to the operating preliminary budget"
+    ],
+    source: { label: "NYC Charter §235", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-prelim": {
+    name: "Step 3 — Mayor's Preliminary Budget",
+    silo: "budget",
+    subhead: "Jan 16 · §236",
+    description: "The Mayor submits the Preliminary Budget — a forecast of next year's expenses, revenues, and capital plan — to Council, public, BPs, and CPC. Produced by the Office of Management and Budget (OMB). For FY2027 (released Feb 2026 under Mamdani): $127B, with an assumed 9.5% property-tax hike.",
+    keyFacts: [
+      "Includes expense budget, capital commitment plan, four-year financial plan",
+      "OMB is the Mayor's budget agency",
+      "FY27 Preliminary: $127B, Feb 2026 — first under Mamdani"
+    ],
+    source: { label: "NYC Charter §236", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-ibo": {
+    name: "Step 4 — IBO Preliminary Analysis",
+    silo: "budget",
+    subhead: "Feb 1 · §237",
+    description: "The Independent Budget Office publishes its first independent analysis of the Preliminary Budget, including alternative revenue/expenditure allocations. IBO is a nonpartisan office modeled on the federal Congressional Budget Office.",
+    keyFacts: [
+      "IBO is statutorily independent — not under Mayor or Council",
+      "Three required IBO reports per cycle: Feb 1, mid-March, May 15",
+      "Provides alternative ways of allocating resources"
+    ],
+    source: { label: "NYC Charter §237", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-cbbp": {
+    name: "Step 5 — CB Responsiveness + BP Modifications",
+    silo: "reviewing",
+    subhead: "Feb 15 (CBs) · Mar 10–25 (BPs)",
+    description: "Community Boards assess whether the Preliminary Budget responds to their submitted priorities (§238). Borough Presidents then submit recommended modifications (§245), constrained by the rule that the net effect can't increase total appropriations.",
+    keyFacts: [
+      "CB priorities feed into the Preliminary Budget months earlier",
+      "BP modifications must be revenue-neutral (offsetting cuts required)",
+      "Both are advisory"
+    ],
+    source: { label: "NYC Charter §§238, 245", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-response": {
+    name: "Step 6 — Council Preliminary Budget Response",
+    silo: "budget",
+    subhead: "Mar 25 · §247",
+    description: "The Council holds extensive hearings (Finance Committee + each oversight committee) and publishes its Preliminary Budget Response by March 25 — its formal counter-proposal of additions, cuts, and policy priorities for the Mayor to consider in the Executive Budget.",
+    keyFacts: [
+      "Council Finance Committee leads",
+      "Response is the Council's main leverage point before Executive Budget",
+      "Often the public peak of budget negotiation tension"
+    ],
+    source: { label: "NYC Charter §247", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-exec": {
+    name: "Step 7 — Mayor's Executive Budget",
+    silo: "budget",
+    subhead: "Apr 26 · §249",
+    description: "The Mayor submits the Executive Budget and budget message, revising the Preliminary Budget in light of Council, BP, and IBO input. Includes a four-year financial plan update. In odd-numbered years the Mayor also publishes the finalized Ten-Year Capital Strategy. FY27 Executive: $124.7B, released May 2026 — no property-tax hike, no reserve draw.",
+    keyFacts: [
+      "Revised expense plan + updated four-year financial plan",
+      "Ten-Year Capital Strategy finalized same date in odd years (§248, Ch. 9)",
+      "FY27: $124.7B released May 2026 under Mamdani"
+    ],
+    source: { label: "NYC Charter §§248, 249", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-exechrgs": {
+    name: "Step 8 — Council Executive Budget Hearings",
+    silo: "budget",
+    subhead: "May 6–25 · §§251–253",
+    description: "Council holds public hearings on the Executive Budget. BPs submit responses by May 6 (§251); IBO publishes its Executive Budget analysis by May 15 (§252). This is the negotiation window — the 'handshake' between Mayor and Speaker typically lands in late May or early June.",
+    keyFacts: [
+      "BP responses due May 6; IBO analysis May 15",
+      "Speaker–Mayor handshake is the practical adoption moment",
+      "Hearings cover every agency"
+    ],
+    source: { label: "NYC Charter §§251–253", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-adopt": {
+    name: "Step 9 — Council Adopts Budget",
+    silo: "budget",
+    subhead: "June 5 statutory · often late June in practice · §254",
+    description: "Council adopts the budget by majority vote. If Council fails to adopt by June 5, the prior year's budget extends automatically as the new year's budget. The Mayor then has 5 days to veto Council additions or increases (§255); a 2/3 Council vote overrides.",
+    keyFacts: [
+      "Statutory deadline: June 5; in practice often adopted late June",
+      "No adoption = prior year budget rolls over automatically",
+      "Mayor's line-item-style veto on Council additions (§255); 2/3 override",
+      "Fiscal year begins July 1"
+    ],
+    source: { label: "NYC Charter §§254, 255", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-cert": {
+    name: "Step 10 — Certification & Capital Comparison",
+    silo: "budget",
+    subhead: "Next day (cert) · 30 days (capital comparison) · §§256, 257",
+    description: "The day after adoption, the Mayor, Comptroller, and City Clerk jointly certify the budget. Within 30 days, the Mayor publishes a comparison of the adopted capital budget against the Ten-Year Capital Strategy.",
+    keyFacts: [
+      "Three-signature certification (Mayor, Comptroller, Clerk)",
+      "30-day capital-vs.-strategy reconciliation required"
+    ],
+    source: { label: "NYC Charter §§256, 257", url: "https://nyccharter.readthedocs.io/c10/" }
+  },
+  "bud-mods": {
+    name: "Step 11 — Mid-Year Financial Plan Updates",
+    silo: "budget",
+    subhead: "Quarterly + ad hoc · §258",
+    description: "During the fiscal year, the Mayor reexamines revenue and expenditure projections at least quarterly and issues Financial Plan Updates — the November Plan, then the January (Preliminary), April (Executive), and any modifications conditions warrant. Material reallocations (e.g., shifts across units of appropriation) require Council approval.",
+    keyFacts: [
+      "Quarterly reexamination required",
+      "November Plan is the year's first formal modification",
+      "Material reallocations require Council approval"
+    ],
+    source: { label: "NYC Charter §258", url: "https://nyccharter.readthedocs.io/c10/" }
+  }
+};
+
+// ============ OVERLAY DEFINITIONS ============
+// Each overlay is a process that links existing diagram nodes. App.js merges this into its OVERLAYS registry.
+window.NYC_GOV_OVERLAYS_EXT = {
+  elurp: {
+    name: 'ELURP — Expedited Land Use Review Procedure',
+    subtitle: 'Created Nov 2025 · ~90 days · CPC final · click a step for detail',
+    overviewId: 'elurp-overview',
+    steps: [
+      { id:'elurp-cert',   stepNum:'1', shortName:'DCP Certification',                timeLabel:'starts clock',                      arcLabel:'cert.', nodes:['dcp'] },
+      { id:'elurp-cb-bp',  stepNum:'2', shortName:'CB + BP (concurrent)',             timeLabel:'60 days · both at once',            arcLabel:'60d',   nodes:['cb-brooklyn','cb-queens','cb-manhattan','cb-bronx','cb-staten-island','cb-total','bp-brooklyn','bp-queens','bp-manhattan','bp-bronx','bp-staten-island'] },
+      { id:'elurp-cpc',    stepNum:'3', shortName:'City Planning Commission',         timeLabel:'30 days · CPC vote is final',       arcLabel:'30d',   nodes:['dcp'] },
+      { id:'elurp-ahab',   stepNum:'4', shortName:'AHAB (only if Council reviewed)',  timeLabel:'Mayor + Speaker + BP · 2-of-3',     arcLabel:'AHAB',  nodes:['mayor','city-council','bp-brooklyn','bp-queens','bp-manhattan','bp-bronx','bp-staten-island'], branch:true }
+    ]
+  },
+  'local-law': {
+    name: 'How a Local Law Becomes Part of the Administrative Code',
+    subtitle: 'Charter §§28–40 · 26 of 51 to pass · 34 of 51 to override',
+    overviewId: 'local-law-overview',
+    steps: [
+      { id:'law-intro',     stepNum:'1', shortName:'Introduction',                timeLabel:'Stated Meeting',                arcLabel:'intro',  nodes:['city-council','mayor','public-advocate','bp-brooklyn','bp-queens','bp-manhattan','bp-bronx','bp-staten-island'] },
+      { id:'law-committee', stepNum:'2', shortName:'Committee Referral',          timeLabel:'Speaker assigns',               arcLabel:'refer',  nodes:['city-council'] },
+      { id:'law-hearing',   stepNum:'3', shortName:'Hearing & Markup',            timeLabel:'public testimony + vote',       arcLabel:'hearing',nodes:['city-council'] },
+      { id:'law-layover',   stepNum:'4', shortName:'Seven-Day Layover',           timeLabel:'§36 · 7 calendar days',         arcLabel:'7d',     nodes:['city-council'] },
+      { id:'law-vote',      stepNum:'5', shortName:'Full Council Vote',           timeLabel:'26 of 51 needed',               arcLabel:'26/51',  nodes:['city-council'] },
+      { id:'law-mayor',     stepNum:'6', shortName:'Mayor',                       timeLabel:'30 days · sign/veto/silence',   arcLabel:'30d',    nodes:['mayor'] },
+      { id:'law-override',  stepNum:'7', shortName:'Council Override',            timeLabel:'34 of 51 within 30 days',       arcLabel:'34/51',  nodes:['city-council'], branch:true },
+      { id:'law-effective', stepNum:'8', shortName:'Effective Date',              timeLabel:'default: immediately',          arcLabel:'eff.',   nodes:['admin-code'] },
+      { id:'law-codify',    stepNum:'9', shortName:'Codification',                timeLabel:'into Admin Code',               arcLabel:'codify', nodes:['admin-code','nyc-charter'] }
+    ]
+  },
+  'budget-process': {
+    name: 'NYC Annual Budget Cycle (FY July 1 – June 30)',
+    subtitle: 'Charter Chapter 10 · Nov 1 → June 30',
+    overviewId: 'budget-process-overview',
+    steps: [
+      { id:'bud-revenue',  stepNum:'1',  shortName:'Comptroller Revenue Cert.', timeLabel:'Nov 1 · §229',          arcLabel:'Nov 1',   nodes:['comptroller'] },
+      { id:'bud-capcert',  stepNum:'2',  shortName:'Capital Debt Certificate',  timeLabel:'Jan 16 · §235',         arcLabel:'Jan 16',  nodes:['mayor','capital-budget'] },
+      { id:'bud-prelim',   stepNum:'3',  shortName:"Mayor's Preliminary Budget",timeLabel:'Jan 16 · §236',         arcLabel:'Jan 16',  nodes:['mayor','budget-overview','expense-budget','capital-budget'] },
+      { id:'bud-ibo',      stepNum:'4',  shortName:'IBO Analysis',              timeLabel:'Feb 1 · §237',          arcLabel:'Feb 1',   nodes:['comptroller'] },
+      { id:'bud-cbbp',     stepNum:'5',  shortName:'CB + BP Input',             timeLabel:'Feb 15 / Mar 10–25',    arcLabel:'Feb–Mar', nodes:['cb-total','bp-brooklyn','bp-queens','bp-manhattan','bp-bronx','bp-staten-island'] },
+      { id:'bud-response', stepNum:'6',  shortName:'Council Prelim. Response',  timeLabel:'Mar 25 · §247',         arcLabel:'Mar 25',  nodes:['city-council'] },
+      { id:'bud-exec',     stepNum:'7',  shortName:"Mayor's Executive Budget",  timeLabel:'Apr 26 · §249',         arcLabel:'Apr 26',  nodes:['mayor','executive-budget','expense-budget','capital-budget'] },
+      { id:'bud-exechrgs', stepNum:'8',  shortName:'Exec. Budget Hearings',     timeLabel:'May 6–25 · §§251–253',  arcLabel:'May',     nodes:['city-council'] },
+      { id:'bud-adopt',    stepNum:'9',  shortName:'Council Adopts',            timeLabel:'June 5 · §254',         arcLabel:'June 5',  nodes:['city-council','adopted-budget'] },
+      { id:'bud-cert',     stepNum:'10', shortName:'Certification',             timeLabel:'next day · §§256, 257', arcLabel:'cert.',   nodes:['mayor','comptroller','adopted-budget','capital-budget'] },
+      { id:'bud-mods',     stepNum:'11', shortName:'Mid-Year Modifications',    timeLabel:'quarterly · §258',      arcLabel:'mod.',    nodes:['mayor','operating-budget'] }
+    ]
   }
 };

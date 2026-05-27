@@ -28,10 +28,22 @@
       <p class="subtitle">A clickable version of the three-silo diagram. Click any node for what it is, what it does, and a link to the authoritative source.</p>
     </div>
     <div class="topbar-controls">
-      <label class="overlay-label">Overlays:</label>
-      <button class="overlay-toggle" data-overlay="ulurp" id="toggleUlurp" aria-pressed="false">
-        <span class="dot ulurp-dot"></span>
-        ULURP (Land Use Review)
+      <label class="overlay-label">Process overlays:</label>
+      <button class="overlay-toggle" data-overlay="ulurp" aria-pressed="false">
+        <span class="dot" style="background: var(--ov-ulurp)"></span>
+        ULURP
+      </button>
+      <button class="overlay-toggle" data-overlay="elurp" aria-pressed="false">
+        <span class="dot" style="background: var(--ov-elurp)"></span>
+        ELURP
+      </button>
+      <button class="overlay-toggle" data-overlay="local-law" aria-pressed="false">
+        <span class="dot" style="background: var(--ov-locallaw)"></span>
+        Local Law
+      </button>
+      <button class="overlay-toggle" data-overlay="budget-process" aria-pressed="false">
+        <span class="dot" style="background: var(--ov-budget)"></span>
+        Budget
       </button>
     </div>
   </div>
@@ -48,49 +60,11 @@
       <span class="legend-chip inter">Intergovernmental Silo</span>
     </div>
 
-    <!-- ULURP timeline banner (visible only when ULURP overlay active) -->
-    <div class="ulurp-banner" id="ulurpBanner" aria-hidden="true">
-      <div class="ulurp-banner-header">
-        <strong>ULURP — Uniform Land Use Review Procedure</strong>
-        <span class="ulurp-banner-sub">Charter §197-c · max ~205 days · click any step for detail</span>
-      </div>
-      <ol class="ulurp-timeline">
-        <li class="ulurp-step" data-id="ulurp-cert"     data-node="dcp">
-          <span class="step-num">0</span><span class="step-name">DCP Certification</span><span class="step-days">starts clock</span>
-        </li>
-        <li class="ulurp-arrow">→</li>
-        <li class="ulurp-step" data-id="ulurp-cb"       data-node="cb-total">
-          <span class="step-num">1</span><span class="step-name">Community Board</span><span class="step-days">60 days · advisory</span>
-        </li>
-        <li class="ulurp-arrow">→</li>
-        <li class="ulurp-step" data-id="ulurp-bp"       data-node="bp-manhattan">
-          <span class="step-num">2</span><span class="step-name">Borough President</span><span class="step-days">30 days · advisory</span>
-        </li>
-        <li class="ulurp-arrow">→</li>
-        <li class="ulurp-step" data-id="ulurp-cpc"      data-node="dcp">
-          <span class="step-num">3</span><span class="step-name">City Planning Commission</span><span class="step-days">60 days · vote</span>
-        </li>
-        <li class="ulurp-arrow">→</li>
-        <li class="ulurp-step" data-id="ulurp-council"  data-node="city-council">
-          <span class="step-num">4</span><span class="step-name">City Council</span><span class="step-days">50 days · vote</span>
-        </li>
-        <li class="ulurp-arrow">→</li>
-        <li class="ulurp-step" data-id="ulurp-mayor"    data-node="mayor">
-          <span class="step-num">5a</span><span class="step-name">Mayor</span><span class="step-days">5 days · veto (non-AH)</span>
-        </li>
-        <li class="ulurp-arrow ahab-arrow">↘</li>
-        <li class="ulurp-step ahab-step" data-id="ulurp-ahab" data-node="mayor">
-          <span class="step-num">5b</span><span class="step-name">Aff. Housing Appeals Board</span><span class="step-days">Mayor + Speaker + BP · 2-of-3 (AH only)</span>
-        </li>
-        <li class="ulurp-arrow">⟲</li>
-        <li class="ulurp-step" data-id="ulurp-override" data-node="city-council">
-          <span class="step-num">6</span><span class="step-name">Council Override</span><span class="step-days">10 days · 2/3 vote</span>
-        </li>
-      </ol>
-    </div>
+    <!-- Generic process-overlay banner (populated by JS per active overlay) -->
+    <div class="overlay-banner" id="overlayBanner" aria-hidden="true"></div>
 
-    <!-- SVG overlay for connection lines (drawn dynamically when ULURP active) -->
-    <svg class="ulurp-connections" id="ulurpConnections" aria-hidden="true"></svg>
+    <!-- SVG overlay for connection lines (drawn dynamically when an overlay is active) -->
+    <svg class="overlay-connections" id="overlayConnections" aria-hidden="true"></svg>
 
     <div class="diagram-grid">
 
