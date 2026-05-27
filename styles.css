@@ -217,6 +217,27 @@ body.overlay-ulurp .ulurp-banner { display: block; }
   font-weight: 700;
   padding: 0 2px;
 }
+/* AHAB branch — visually distinct (purple) to mark it as the AH-only path added Nov 2025 */
+.ulurp-step.ahab-step {
+  border-color: var(--inter);
+  border-style: dashed;
+}
+.ulurp-step.ahab-step .step-num {
+  color: var(--inter);
+  background: rgba(139,71,137,0.15);
+}
+.ulurp-step.ahab-step:hover,
+.ulurp-step.ahab-step.active {
+  background: var(--inter);
+  color: #fff;
+  border-style: solid;
+}
+.ulurp-step.ahab-step:hover .step-num,
+.ulurp-step.ahab-step.active .step-num {
+  color: var(--inter);
+  background: #fff;
+}
+.ulurp-arrow.ahab-arrow { color: var(--inter); }
 
 /* SVG connection layer */
 .ulurp-connections {
@@ -254,6 +275,10 @@ body.overlay-ulurp .ulurp-connections { display: block; }
   opacity: 1;
   animation: none;
 }
+.ulurp-connections .ahab-path { stroke: var(--inter); }
+.ulurp-connections .ahab-arrowhead { fill: var(--inter); }
+.ulurp-connections .ahab-label-bg { stroke: var(--inter); }
+.ulurp-connections .ahab-text { fill: var(--inter); }
 @keyframes ulurp-dash {
   to { stroke-dashoffset: -26; }
 }

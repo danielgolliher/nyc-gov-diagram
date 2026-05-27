@@ -623,13 +623,14 @@ window.NYC_GOV_DATA = {
   "ulurp-overview": {
     name: "ULURP — Uniform Land Use Review Procedure",
     silo: "doing",
-    subhead: "NYC Charter §197-c · max ~205 days",
-    description: "ULURP is the public review process for changes to NYC's physical plant — rezonings, special permits, dispositions of city property, new sites for city facilities, urban renewal designations, and similar land-use actions. It was created by the 1975 Charter revision to give Community Boards, Borough Presidents, the City Planning Commission, the City Council, and the Mayor formal roles (with deadlines) in any significant land-use decision. Codified at NYC Charter §197-c.",
+    subhead: "NYC Charter §197-c · max ~205 days · amended Nov 2025",
+    description: "ULURP is the public review process for changes to NYC's physical plant — rezonings, special permits, dispositions of city property, new sites for city facilities, urban renewal designations, and similar land-use actions. Created by the 1975 Charter revision to give Community Boards, Borough Presidents, the City Planning Commission, the City Council, and the Mayor formal roles (with deadlines) in any significant land-use decision. November 2025 voters amended ULURP in three ways: a Fast Track for publicly financed affordable housing (Q2), a new abbreviated track for modest projects called ELURP (Q3), and replacement of the Mayor's solo veto with an Affordable Housing Appeals Board for AH applications (Q4).",
     keyFacts: [
       "Created by 1975 Charter revision",
       "Codified at NYC Charter §§ 197-c, 197-d",
       "Max ~205 days from certification to mayoral veto window",
-      "Six review bodies: DCP → CB → BP (+ Borough Board if cross-CB) → CPC → Council → Mayor"
+      "Bodies: DCP → CB → BP (+ Borough Board if cross-CB) → CPC → Council → Mayor or AHAB",
+      "Nov 2025 amendments (all passed): Q2 Fast Track AH (58.32%), Q3 ELURP (56.75%), Q4 AHAB"
     ],
     source: { label: "NYC Planning: Public Review", url: "https://www.nyc.gov/content/planning/pages/planning/public-review" }
   },
@@ -694,15 +695,31 @@ window.NYC_GOV_DATA = {
     source: { label: "Charter §197-d", url: "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-1962" }
   },
   "ulurp-mayor": {
-    name: "Step 5 — Mayor's Veto Window",
+    name: "Step 5a — Mayor's Veto Window (non-AH apps)",
     silo: "doing",
     subhead: "5 days · veto",
-    description: "After the Council votes, the Mayor has 5 days to veto. If the Mayor doesn't act, the Council's decision stands. This is one of the few formal mayoral land-use checks; in practice, vetoes are rare.",
+    description: "After the Council votes, the Mayor has 5 days to veto. If the Mayor doesn't act, the Council's decision stands. As of November 2025, this solo mayoral veto applies only to non-affordable-housing ULURP applications — affordable housing applications now go to the Affordable Housing Appeals Board (Step 5b) instead.",
     keyFacts: [
       "5-day veto window",
-      "Most Council decisions take effect without mayoral action"
+      "Most Council decisions take effect without mayoral action",
+      "AH applications: AHAB replaces this step (Nov 2025 Charter amendment, Q4)"
     ],
     source: { label: "Charter §197-d", url: "https://codelibrary.amlegal.com/codes/newyorkcity/latest/NYCcharter/0-0-0-1962" }
+  },
+  "ulurp-ahab": {
+    name: "Step 5b — Affordable Housing Appeals Board (AHAB)",
+    silo: "doing",
+    subhead: "3-member board · 2-of-3 reverses Council · affordable housing only",
+    description: "Added by Proposal 4 on the November 4, 2025 NYC ballot (passed). For affordable housing ULURP applications only: if the City Council disapproves or modifies the application, the case goes to a three-member Affordable Housing Appeals Board — the Mayor, the Speaker of the City Council, and the Borough President of the borough where the project sits. A 2-of-3 vote of the Board reverses the Council's disapproval or modification. This replaces the Mayor's prior solo veto for affordable housing projects. Effective immediately, but rule-making is required for full implementation.",
+    keyFacts: [
+      "Created by Nov 4, 2025 ballot Proposal 4 (Affordable Housing Appeals Board)",
+      "Members: Mayor + Council Speaker + local Borough President",
+      "Vote: 2 of 3 reverses Council disapproval/modification",
+      "Applies only to affordable housing applications",
+      "Replaces the Mayor's solo ULURP veto for AH apps",
+      "Effective immediately; rules-promulgation pending"
+    ],
+    source: { label: "Ballotpedia: 2025 NYC Question 4", url: "https://ballotpedia.org/New_York,_New_York,_Question_4,_Affordable_Housing_Appeals_Board_Charter_Amendment_(November_2025)" }
   },
   "ulurp-override": {
     name: "Step 6 — Council Override",

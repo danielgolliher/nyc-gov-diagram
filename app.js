@@ -98,6 +98,8 @@
     { id: 'ulurp-cpc',      nodes: ['dcp'],                                                  label: '60d' },
     { id: 'ulurp-council',  nodes: ['city-council'],                                         label: '50d' },
     { id: 'ulurp-mayor',    nodes: ['mayor'],                                                label: '5d' },
+    // AHAB branch (Nov 2025) — Mayor + Speaker (= city-council) + local BP, 2-of-3 reverses Council on AH apps
+    { id: 'ulurp-ahab',     nodes: ['mayor','city-council','bp-brooklyn','bp-queens','bp-manhattan','bp-bronx','bp-staten-island'], label: 'AHAB', branch: true },
     { id: 'ulurp-override', nodes: ['city-council'],                                         label: '10d' }
   ];
 
@@ -157,14 +159,7 @@
     svg.setAttribute('height', rect.height);
     svg.setAttribute('viewBox', `0 0 ${rect.width} ${rect.height}`);
 
-    // arrowhead marker def
-    let inner = `
-      <defs>
-        <marker id="ulurpArrow" viewBox="0 0 10 10" refX="9" refY="5"
-                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-          <path d="M 0 0 L 10 5 L 0 10 z" class="ulurp-arrowhead"/>
-        </marker>
-      </defs>`;
+    let inner = '';
 
     const points = ULURP_STEPS
       .map(s => ({ step: s, p: representativeNodeForStep(s, rect) }))
@@ -174,21 +169,38 @@
       const a = points[i].p;
       const b = points[i + 1].p;
       const d = drawCurve(a.x, a.y, b.x, b.y);
-      inner += `<path d="${d}" marker-end="url(#ulurpArrow)" />`;
+      // Mark the segment as AHAB-branch if either endpoint is the AHAB step
+      const isBranch = points[i].step.branch || points[i + 1].step.branch;
+      const cls = isBranch ? 'ahab-path' : '';
+      const marker = isBranch ? 'url(#ahabArrow)' : 'url(#ulurpArrow)';
+      inner += `<path class="${cls}" d="${d}" marker-end="${marker}" />`;
 
-      // Label at the curve midpoint with the day-count for the next step
       const mx = (a.x + b.x) / 2;
       const my = (a.y + b.y) / 2;
       const label = points[i + 1].step.label;
       if (label) {
-        const padX = 4, padY = 2;
+        const padX = 4;
         const w = label.length * 6.5 + padX * 2;
         const h = 14;
-        inner += `<rect class="label-bg" x="${mx - w/2}" y="${my - h/2}" width="${w}" height="${h}" rx="4" ry="4"/>`;
-        inner += `<text x="${mx}" y="${my + 4}" text-anchor="middle">${label}</text>`;
+        const bgCls = isBranch ? 'label-bg ahab-label-bg' : 'label-bg';
+        const textCls = isBranch ? 'ahab-text' : '';
+        inner += `<rect class="${bgCls}" x="${mx - w/2}" y="${my - h/2}" width="${w}" height="${h}" rx="4" ry="4"/>`;
+        inner += `<text class="${textCls}" x="${mx}" y="${my + 4}" text-anchor="middle">${label}</text>`;
       }
     }
-    svg.innerHTML = inner;
+    // arrowhead defs (after iteration so we know we need both colors)
+    const defs = `
+      <defs>
+        <marker id="ulurpArrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="ulurp-arrowhead"/>
+        </marker>
+        <marker id="ahabArrow" viewBox="0 0 10 10" refX="9" refY="5"
+                markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="ahab-arrowhead"/>
+        </marker>
+      </defs>`;
+    svg.innerHTML = defs + inner;
   }
 
   function setUlurp(on) {
