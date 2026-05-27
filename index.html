@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NYC Government — Interactive Map</title>
+<link rel="icon" type="image/png" sizes="32x32" href="https://maximumnewyork.com/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="https://maximumnewyork.com/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="https://maximumnewyork.com/apple-touch-icon.png" />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GLKQCE09RE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-GLKQCE09RE');
+</script>
+
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-text">
+      <h1>NYC Government — Interactive Map</h1>
+      <p class="subtitle">A clickable version of the three-silo diagram. Click any node for what it is, what it does, and a link to the authoritative source.</p>
+    </div>
+    <div class="topbar-controls">
+      <label class="overlay-label">Overlays:</label>
+      <button class="overlay-toggle" data-overlay="ulurp" id="toggleUlurp" aria-pressed="false">
+        <span class="dot ulurp-dot"></span>
+        ULURP (Land Use Review)
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ============ DIAGRAM PANEL ============ -->
+  <section class="diagram-panel">
+
+    <div class="silo-legend">
+      <span class="legend-chip doing">Doing Silo</span>
+      <span class="legend-chip reviewing">Reviewing Silo</span>
+      <span class="legend-chip inter">Intergovernmental Silo</span>
+    </div>
+
+    <!-- ULURP timeline banner (visible only when ULURP overlay active) -->
+    <div class="ulurp-banner" id="ulurpBanner" aria-hidden="true">
+      <div class="ulurp-banner-header">
+        <strong>ULURP — Uniform Land Use Review Procedure</strong>
+        <span class="ulurp-banner-sub">Charter §197-c · max ~205 days · click any step for detail</span>
+      </div>
+      <ol class="ulurp-timeline">
+        <li class="ulurp-step" data-id="ulurp-cert"     data-node="dcp">
+          <span class="step-num">0</span><span class="step-name">DCP Certification</span><span class="step-days">starts clock</span>
+        </li>
+        <li class="ulurp-arrow">→</li>
+        <li class="ulurp-step" data-id="ulurp-cb"       data-node="cb-total">
+          <span class="step-num">1</span><span class="step-name">Community Board</span><span class="step-days">60 days · advisory</span>
+        </li>
+        <li class="ulurp-arrow">→</li>
+        <li class="ulurp-step" data-id="ulurp-bp"       data-node="bp-manhattan">
+          <span class="step-num">2</span><span class="step-name">Borough President</span><span class="step-days">30 days · advisory</span>
+        </li>
+        <li class="ulurp-arrow">→</li>
+        <li class="ulurp-step" data-id="ulurp-cpc"      data-node="dcp">
+          <span class="step-num">3</span><span class="step-name">City Planning Commission</span><span class="step-days">60 days · vote</span>
+        </li>
+        <li class="ulurp-arrow">→</li>
+        <li class="ulurp-step" data-id="ulurp-council"  data-node="city-council">
+          <span class="step-num">4</span><span class="step-name">City Council</span><span class="step-days">50 days · vote</span>
+        </li>
+        <li class="ulurp-arrow">→</li>
+        <li class="ulurp-step" data-id="ulurp-mayor"    data-node="mayor">
+          <span class="step-num">5</span><span class="step-name">Mayor</span><span class="step-days">5 days · veto</span>
+        </li>
+        <li class="ulurp-arrow">⟲</li>
+        <li class="ulurp-step" data-id="ulurp-override" data-node="city-council">
+          <span class="step-num">6</span><span class="step-name">Council Override</span><span class="step-days">10 days · 2/3 vote</span>
+        </li>
+      </ol>
+    </div>
+
+    <!-- SVG overlay for connection lines (drawn dynamically when ULURP active) -->
+    <svg class="ulurp-connections" id="ulurpConnections" aria-hidden="true"></svg>
+
+    <div class="diagram-grid">
+
+      <!-- ============ DOING SILO (top-left) ============ -->
+      <section class="silo doing-silo" aria-label="Doing Silo">
+        <h2 class="silo-label">Doing Silo</h2>
+
+        <div class="stack-vertical">
+          <div class="node node-doc" data-id="us-constitution">U.S. Constitution</div>
+          <div class="arrow-down">↓</div>
+          <div class="node node-doc" data-id="nys-constitution">NYS Constitution<br/><span class="sub">Article IX</span></div>
+          <div class="arrow-down">↓</div>
+          <div class="node node-doc primary" data-id="nyc-charter">NYC Charter</div>
+        </div>
+
+        <div class="charter-offices">
+          <div class="node node-office" data-id="mayor">Mayor</div>
+          <div class="node node-office" data-id="comptroller">Comptroller</div>
+          <div class="node node-office" data-id="public-advocate">Public Advocate</div>
+        </div>
+
+        <div class="doing-cols">
+
+          <div class="doing-col">
+            <div class="node node-box" data-id="city-council">
+              <div class="box-title">City Council</div>
+              <ul class="box-list">
+                <li>51 elected members</li>
+                <li>35 committees</li>
+                <li>1 Speaker</li>
+                <li>2 jobs: legislation &amp; oversight</li>
+                <li>2 enactments: local laws &amp; resolutions</li>
+              </ul>
+            </div>
+            <div class="arrow-down">↓</div>
+            <div class="node node-doc" data-id="admin-code">Administrative Code</div>
+          </div>
+
+          <div class="doing-col">
+            <div class="node node-box" data-id="agencies">
+              <div class="box-title">Agencies</div>
+              <div class="agency-grid">
+                <div class="agency-col">
+                  <div class="agency-group-label">Mayoral</div>
+                  <span class="chip" data-id="dohmh">DOHMH</span>
+                  <span class="chip" data-id="dsny">DSNY</span>
+                  <span class="chip" data-id="nypd">NYPD</span>
+                  <span class="chip" data-id="doe">DOE</span>
+                  <span class="chip" data-id="dot">DOT</span>
+                  <span class="chip" data-id="doc">DOC</span>
+                  <span class="chip" data-id="ddc">DDC</span>
+                  <span class="chip" data-id="dpr">DPR</span>
+                  <span class="chip" data-id="dcp">DCP</span>
+                  <span class="chip" data-id="dep">DEP</span>
+                </div>
+                <div class="agency-col">
+                  <div class="agency-group-label">Authorities &amp; PBCs</div>
+                  <span class="chip alt" data-id="mta">MTA</span>
+                  <span class="chip alt" data-id="nycha">NYCHA</span>
+                  <span class="chip alt" data-id="hh">H+H</span>
+                  <span class="chip alt" data-id="edc">EDC</span>
+                  <span class="chip alt" data-id="libraries">Libraries</span>
+                  <span class="chip alt" data-id="panynj">PANYNJ</span>
+                </div>
+              </div>
+            </div>
+            <div class="arrow-down">↓</div>
+            <div class="node node-doc" data-id="rcny">Rules of the City of New York</div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ============ BUDGET (top-center) ============ -->
+      <section class="silo budget-silo" aria-label="Budget">
+        <h2 class="silo-label">Budget</h2>
+
+        <div class="node node-budget" data-id="budget-overview">
+          <div class="box-title">Budget</div>
+          <div class="budget-total">$124.7B</div>
+          <div class="budget-sub">FY2027 Executive · May 12, 2026</div>
+          <div class="budget-types">
+            <span class="chip mini" data-id="executive-budget">executive</span>
+            <span class="chip mini" data-id="adopted-budget">adopted</span>
+            <span class="chip mini" data-id="expense-budget">expense</span>
+            <span class="chip mini" data-id="capital-budget">capital</span>
+            <span class="chip mini" data-id="operating-budget">operating</span>
+          </div>
+        </div>
+
+        <div class="pie-wrap">
+          <svg viewBox="0 0 220 220" class="pie" role="img" aria-label="Budget composition">
+            <circle cx="110" cy="110" r="100" fill="#fff" stroke="#222" stroke-width="2"/>
+            <!-- Education ~30% of pie (angle 108°) -->
+            <path d="M110,110 L110,10 A100,100 0 0,1 205.1,141.0 Z"
+                  fill="#cfe8ff" stroke="#222" stroke-width="1.5"
+                  class="pie-slice" data-id="budget-education"/>
+            <!-- Social services ~25% (angle 90°) -->
+            <path d="M110,110 L205.1,141.0 A100,100 0 0,1 110,210 Z"
+                  fill="#ffe1c2" stroke="#222" stroke-width="1.5"
+                  class="pie-slice" data-id="budget-social-services"/>
+            <!-- Other (rest) -->
+            <path d="M110,110 L110,210 A100,100 0 1,1 110,10 Z"
+                  fill="#e8e8e8" stroke="#222" stroke-width="1.5"
+                  class="pie-slice" data-id="budget-other"/>
+            <text x="150" y="65" class="pie-label">education</text>
+            <text x="155" y="155" class="pie-label">social services</text>
+            <text x="35" y="110" class="pie-label">other</text>
+          </svg>
+        </div>
+      </section>
+
+      <!-- ============ REVIEWING SILO (top-right) ============ -->
+      <section class="silo reviewing-silo" aria-label="Reviewing Silo">
+        <h2 class="silo-label">Reviewing Silo</h2>
+
+        <table class="boroughs-table">
+          <thead>
+            <tr>
+              <th>Borough (County)</th>
+              <th>BP</th>
+              <th>Community Boards</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="node node-inline" data-id="brooklyn">Brooklyn (Kings)</span></td>
+              <td><span class="chip" data-id="bp-brooklyn">BP</span></td>
+              <td><span class="chip cbs" data-id="cb-brooklyn">18 CBs</span></td>
+            </tr>
+            <tr>
+              <td><span class="node node-inline" data-id="queens">Queens (Queens)</span></td>
+              <td><span class="chip" data-id="bp-queens">BP</span></td>
+              <td><span class="chip cbs" data-id="cb-queens">14 CBs</span></td>
+            </tr>
+            <tr>
+              <td><span class="node node-inline" data-id="manhattan">Manhattan (New York)</span></td>
+              <td><span class="chip" data-id="bp-manhattan">BP</span></td>
+              <td><span class="chip cbs" data-id="cb-manhattan">12 CBs</span></td>
+            </tr>
+            <tr>
+              <td><span class="node node-inline" data-id="bronx">Bronx (Bronx)</span></td>
+              <td><span class="chip" data-id="bp-bronx">BP</span></td>
+              <td><span class="chip cbs" data-id="cb-bronx">12 CBs</span></td>
+            </tr>
+            <tr>
+              <td><span class="node node-inline" data-id="staten-island">Staten Island (Richmond)</span></td>
+              <td><span class="chip" data-id="bp-staten-island">BP</span></td>
+              <td><span class="chip cbs" data-id="cb-staten-island">3 CBs</span></td>
+            </tr>
+            <tr class="total-row">
+              <td colspan="2" style="text-align:right;"><em>Total CBs:</em></td>
+              <td><span class="chip cbs total" data-id="cb-total">59</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p class="note">BP appoints CB members. CBs review land use, budget priorities, and quality-of-life issues.</p>
+      </section>
+
+      <!-- ============ INTERGOVERNMENTAL SILO (bottom-right) ============ -->
+      <section class="silo inter-silo" aria-label="Intergovernmental Silo">
+        <h2 class="silo-label">Intergovernmental Silo</h2>
+
+        <div class="inter-cols">
+          <div class="inter-col">
+            <h3 class="inter-header">DC (Federal)</h3>
+            <ul class="inter-list">
+              <li><span class="node node-inline" data-id="bd-estimate-morris">Board of Estimate v. Morris (1989)</span></li>
+              <li><span class="node node-inline" data-id="panynj-approval">PANYNJ (both governors must approve)</span></li>
+              <li><span class="node node-inline" data-id="federal-block-grants">Federal block grants</span></li>
+              <li><span class="node node-inline" data-id="federal-preemption">Federal pre-emption</span></li>
+            </ul>
+          </div>
+          <div class="inter-col">
+            <h3 class="inter-header">NYS</h3>
+            <ul class="inter-list">
+              <li><span class="node node-inline" data-id="nys-block-grants">State block grants</span></li>
+              <li><span class="node node-inline" data-id="nys-preemption">State pre-emption</span></li>
+              <li><span class="node node-inline" data-id="nys-authorities">Creation of authorities</span></li>
+              <li><span class="node node-inline" data-id="nys-courts">State courts</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </section>
+
+  <!-- ============ INFO SIDEBAR ============ -->
+  <aside class="info-panel" id="infoPanel">
+    <div class="info-empty">
+      <h2>Click anything on the map</h2>
+      <p>Each clickable node opens an info panel with a description, key numbers, and a link to the authoritative source (typically NYC's <a href="https://greenbook.nyc.gov/" target="_blank" rel="noopener">Greenbook</a>).</p>
+      <p class="hint">The three silos correspond to the three modes of NYC governance — <strong>Doing</strong> (Charter, Mayor, Council, agencies), <strong>Reviewing</strong> (BPs and CBs), and <strong>Intergovernmental</strong> (DC and Albany).</p>
+    </div>
+  </aside>
+</main>
+
+<footer class="footer">
+  <p>Based on a diagram by Daniel Golliher / Maximum New York. Data: NYC Greenbook, NYC Charter, NYS Constitution Art. IX, and case law sources.</p>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
